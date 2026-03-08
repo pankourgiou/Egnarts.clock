@@ -1,0 +1,418 @@
+
+    // anchor: vertical descent from wave end
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.85,cy-s*0.1); ctx.lineTo(cx+s*0.85,cy+s*0.85);
+    ctx.stroke();
+    // base bar
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.85,cy+s*0.85); ctx.lineTo(cx+s*0.85,cy+s*0.85);
+    ctx.stroke();
+    // left anchor
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.85,cy-s*0.1); ctx.lineTo(cx-s*0.85,cy+s*0.85);
+    ctx.stroke();
+  },
+
+  // 5 — THEVOSS: angular theta — circle bisected by diagonal double-slash
+  function(ctx,cx,cy,r){
+    const s=r*0.8;
+    ctx.beginPath(); ctx.arc(cx,cy,s*0.8,0,Math.PI*2); ctx.stroke();
+    // double-slash through circle
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.55,cy-s*0.6); ctx.lineTo(cx+s*0.35,cy+s*0.7); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.35,cy-s*0.7); ctx.lineTo(cx+s*0.55,cy+s*0.6); ctx.stroke();
+    // outer dagger tip top
+    ctx.beginPath();
+    ctx.moveTo(cx,cy-s*0.8); ctx.lineTo(cx,cy-s*1.1); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.15,cy-s*0.98); ctx.lineTo(cx+s*0.15,cy-s*0.98); ctx.stroke();
+  },
+
+  // 6 — QAELITH: descending ladder with broken last rung
+  function(ctx,cx,cy,r){
+    const s=r*0.85;
+    // two verticals
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.35,cy-s*0.9); ctx.lineTo(cx-s*0.35,cy+s*0.9); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.35,cy-s*0.9); ctx.lineTo(cx+s*0.35,cy+s*0.9); ctx.stroke();
+    // rungs — top 4 solid
+    [-0.75,-0.35,0.05,0.45].forEach(off=>{
+      ctx.beginPath();
+      ctx.moveTo(cx-s*0.35,cy+s*off); ctx.lineTo(cx+s*0.35,cy+s*off);
+      ctx.stroke();
+    });
+    // broken bottom rung (dashed via short segments)
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.35,cy+s*0.82); ctx.lineTo(cx-s*0.08,cy+s*0.82); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.1,cy+s*0.82); ctx.lineTo(cx+s*0.22,cy+s*0.82); ctx.stroke();
+    // accent spike right top
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.35,cy-s*0.9); ctx.lineTo(cx+s*0.6,cy-s*1.1); ctx.stroke();
+  },
+
+  // 7 — NORZUUN: spiral terminating in a barbed tail
+  function(ctx,cx,cy,r){
+    const s=r*0.85;
+    // outer arc
+    ctx.beginPath();
+    ctx.arc(cx,cy-s*0.05,s*0.7,Math.PI*0.6,Math.PI*2.55,false); ctx.stroke();
+    // mid arc
+    ctx.beginPath();
+    ctx.arc(cx+s*0.12,cy-s*0.05,s*0.38,Math.PI*0.5,Math.PI*2.4,false); ctx.stroke();
+    // tail exit
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.12,cy+s*0.33);
+    ctx.bezierCurveTo(cx+s*0.2,cy+s*0.7, cx+s*0.65,cy+s*0.75, cx+s*0.75,cy+s*0.95);
+    ctx.stroke();
+    // barb
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.75,cy+s*0.95);
+    ctx.lineTo(cx+s*0.55,cy+s*0.88); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.75,cy+s*0.95);
+    ctx.lineTo(cx+s*0.68,cy+s*0.75); ctx.stroke();
+    // inner dot
+    ctx.beginPath(); ctx.arc(cx+s*0.12,cy-s*0.05,r*0.1,0,Math.PI*2); ctx.fill();
+  },
+
+  // 8 — ÎXAVAR: forked serpent tongue — two curved prongs from a single root
+  function(ctx,cx,cy,r){
+    const s=r*0.85;
+    // root
+    ctx.beginPath();
+    ctx.moveTo(cx,cy+s*0.9); ctx.lineTo(cx,cy+s*0.2); ctx.stroke();
+    // left prong
+    ctx.beginPath();
+    ctx.moveTo(cx,cy+s*0.2);
+    ctx.bezierCurveTo(cx-s*0.1,cy-s*0.1, cx-s*0.7,cy-s*0.3, cx-s*0.65,cy-s*0.85);
+    ctx.stroke();
+    // right prong
+    ctx.beginPath();
+    ctx.moveTo(cx,cy+s*0.2);
+    ctx.bezierCurveTo(cx+s*0.1,cy-s*0.1, cx+s*0.7,cy-s*0.3, cx+s*0.65,cy-s*0.85);
+    ctx.stroke();
+    // left barb
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.65,cy-s*0.85); ctx.lineTo(cx-s*0.82,cy-s*0.72); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.65,cy-s*0.85); ctx.lineTo(cx-s*0.48,cy-s*0.72); ctx.stroke();
+    // right barb
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.65,cy-s*0.85); ctx.lineTo(cx+s*0.82,cy-s*0.72); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.65,cy-s*0.85); ctx.lineTo(cx+s*0.48,cy-s*0.72); ctx.stroke();
+    // root foot bar
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.3,cy+s*0.9); ctx.lineTo(cx+s*0.3,cy+s*0.9); ctx.stroke();
+  },
+
+  // 9 — DREVATH: open eye with lash-strokes above and wept line below
+  function(ctx,cx,cy,r){
+    const s=r*0.8;
+    // eye outline
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.85,cy);
+    ctx.bezierCurveTo(cx-s*0.4,cy-s*0.55, cx+s*0.4,cy-s*0.55, cx+s*0.85,cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.85,cy);
+    ctx.bezierCurveTo(cx-s*0.4,cy+s*0.55, cx+s*0.4,cy+s*0.55, cx+s*0.85,cy);
+    ctx.stroke();
+    // pupil
+    ctx.beginPath(); ctx.arc(cx,cy,s*0.25,0,Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx,cy,s*0.1,0,Math.PI*2); ctx.fill();
+    // lash strokes above
+    [[-0.5,-0.45],[-0.15,-0.52],[0.2,-0.5],[0.5,-0.42]].forEach(([dx,dy])=>{
+      ctx.beginPath();
+      ctx.moveTo(cx+s*dx,cy+s*dy);
+      ctx.lineTo(cx+s*dx*0.85,cy+s*(dy-0.22));
+      ctx.stroke();
+    });
+    // wept line below
+    ctx.beginPath();
+    ctx.moveTo(cx,cy+s*0.45);
+    ctx.bezierCurveTo(cx+s*0.05,cy+s*0.75, cx-s*0.05,cy+s*0.9, cx,cy+s*1.0);
+    ctx.stroke();
+  },
+
+  // 10 — SOLKETH: ringed planet crossed with angular x-binding
+  function(ctx,cx,cy,r){
+    const s=r*0.75;
+    ctx.beginPath(); ctx.arc(cx,cy,s*0.55,0,Math.PI*2); ctx.stroke();
+    // rings — ellipses
+    ctx.beginPath();
+    ctx.ellipse(cx,cy,s*0.95,s*0.32,Math.PI*0.15,0,Math.PI*2); ctx.stroke();
+    ctx.beginPath();
+    ctx.ellipse(cx,cy,s*0.75,s*0.22,Math.PI*0.15,0,Math.PI*2); ctx.stroke();
+    // x-binding through core
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.38,cy-s*0.38); ctx.lineTo(cx+s*0.38,cy+s*0.38); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.38,cy-s*0.38); ctx.lineTo(cx-s*0.38,cy+s*0.38); ctx.stroke();
+    // centre dot
+    ctx.beginPath(); ctx.arc(cx,cy,r*0.11,0,Math.PI*2); ctx.fill();
+  },
+
+  // 11 — URR·VAEN: asymmetric crescent with interior branching root-mark
+  function(ctx,cx,cy,r){
+    const s=r*0.82;
+    // outer arc (large)
+    ctx.beginPath();
+    ctx.arc(cx+s*0.1,cy,s*0.82,Math.PI*0.55,Math.PI*1.45,false); ctx.stroke();
+    // inner arc (hollow crescent)
+    ctx.beginPath();
+    ctx.arc(cx+s*0.35,cy,s*0.55,Math.PI*0.6,Math.PI*1.4,false); ctx.stroke();
+    // connect tips with thin lines
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.1-s*0.82*Math.cos(Math.PI*0.55),cy-s*0.82*Math.sin(Math.PI*0.55));
+    ctx.lineTo(cx+s*0.35-s*0.55*Math.cos(Math.PI*0.6),cy-s*0.55*Math.sin(Math.PI*0.6));
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx+s*0.1-s*0.82*Math.cos(Math.PI*1.45),cy-s*0.82*Math.sin(Math.PI*1.45));
+    ctx.lineTo(cx+s*0.35-s*0.55*Math.cos(Math.PI*1.4),cy-s*0.55*Math.sin(Math.PI*1.4));
+    ctx.stroke();
+    // interior root
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.6,cy); ctx.lineTo(cx-s*0.1,cy); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.4,cy); ctx.lineTo(cx-s*0.55,cy-s*0.3); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx-s*0.4,cy); ctx.lineTo(cx-s*0.55,cy+s*0.3); ctx.stroke();
+  },
+];
+
+// ══════════════════════════════════════════════════════════════
+//  CANVAS DRAWING ENGINE
+// ══════════════════════════════════════════════════════════════
+const wrap   = document.getElementById('clockWrap');
+const canvas = document.getElementById('faceCanvas');
+let currentHour = -1;
+
+function lerp(a,b,t){ return a+(b-a)*t; }
+
+// Is point (px,py) inside the clock circle?
+function inCircle(px,py,cx,cy,r){ return (px-cx)**2+(py-cy)**2 < r*r; }
+
+// Distance from point to clock centre, normalised
+function distN(px,py,cx,cy,R){ return Math.sqrt((px-cx)**2+(py-cy)**2)/R; }
+
+function drawFace(hour){
+  const size  = wrap.offsetWidth;
+  canvas.width = canvas.height = size;
+  const ctx   = canvas.getContext('2d');
+  const cx    = size/2, cy=size/2;
+  const R     = size/2;            // clock circle radius
+  const faceR = R*0.90;            // inner face radius (inside shell)
+
+  ctx.clearRect(0,0,size,size);
+
+  // ── clip to circle ──────────────────────────────────────────
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,faceR,0,Math.PI*2);
+  ctx.clip();
+
+  // ── background face fill ────────────────────────────────────
+  const bg = ctx.createRadialGradient(cx,cy*0.85,0, cx,cy,faceR);
+  bg.addColorStop(0,'#0a1430');
+  bg.addColorStop(0.6,'#060c1e');
+  bg.addColorStop(1,'#03060f');
+  ctx.fillStyle = bg;
+  ctx.beginPath(); ctx.arc(cx,cy,faceR,0,Math.PI*2); ctx.fill();
+
+  // ── GRID TILE PARAMETERS ──────────────────────────────────
+  // We tile the face with small background glyphs, then draw
+  // the 12 hour glyphs at their precise positions, larger + brighter.
+  const COLS        = 13;
+  const ROWS        = 13;
+  const cellW       = (faceR*2) / COLS;
+  const cellH       = (faceR*2) / ROWS;
+  const startX      = cx - faceR;
+  const startY      = cy - faceR;
+
+  // Pre-compute which cells are "hour positions"
+  // Hour i sits at angle (i*30-90) degrees
+  const hourRadius  = faceR * 0.78;   // radial distance of hour glyphs from centre
+  const hourCells   = new Set();       // "col,row" strings
+  const hourInfo    = [];              // {col,row,idx,angle} for the 12 hours
+
+  for(let i=0;i<12;i++){
+    const ang = (i*30-90)*Math.PI/180;
+    const hx  = cx + hourRadius*Math.cos(ang);
+    const hy  = cy + hourRadius*Math.sin(ang);
+    const col = Math.floor((hx-startX)/cellW);
+    const row = Math.floor((hy-startY)/cellH);
+    const key = `${col},${row}`;
+    hourCells.add(key);
+    hourInfo.push({col,row,cx:hx,cy:hy,idx:i,key});
+  }
+
+  // ── PASS 1: background manuscript glyphs ───────────────────
+  // Draw dimmer, smaller versions of cycling glyphs across all
+  // non-hour, inside-circle cells
+  const BG_SIZE = cellW * 0.38;
+
+  for(let row=0;row<ROWS;row++){
+    for(let col=0;col<COLS;col++){
+      const cellCX = startX + col*cellW + cellW/2;
+      const cellCY = startY + row*cellH + cellH/2;
+      if(!inCircle(cellCX,cellCY,cx,cy,faceR*0.92)) continue;
+      const key = `${col},${row}`;
+      if(hourCells.has(key)) continue;
+
+      const d = distN(cellCX,cellCY,cx,cy,faceR);
+      // opacity varies: brighter near rim, dimmer near centre
+      const opacity = lerp(0.06, 0.22, d*1.1);
+      const glyphIdx = (col*7+row*3+col+row)%12;
+
+      ctx.save();
+      ctx.globalAlpha = opacity;
+      ctx.strokeStyle = '#00c8b0';
+      ctx.fillStyle   = '#00c8b0';
+      ctx.lineWidth   = 0.6;
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
+      GLYPHS[glyphIdx](ctx, cellCX, cellCY, BG_SIZE);
+      ctx.restore();
+    }
+  }
+
+  // ── PASS 2: subtle radial tick marks at hour positions ─────
+  for(let i=0;i<60;i++){
+    const ang = (i/60)*Math.PI*2 - Math.PI/2;
+    const isMaj = i%5===0;
+    const inner = faceR*(isMaj?0.88:0.92);
+    const outer = faceR*0.96;
+    ctx.beginPath();
+    ctx.moveTo(cx+inner*Math.cos(ang), cy+inner*Math.sin(ang));
+    ctx.lineTo(cx+outer*Math.cos(ang), cy+outer*Math.sin(ang));
+    ctx.strokeStyle = isMaj ? 'rgba(0,200,180,0.35)' : 'rgba(0,150,130,0.15)';
+    ctx.lineWidth   = isMaj ? 1.2 : 0.7;
+    ctx.stroke();
+  }
+
+  // ── PASS 3: hour position glyphs — large, bright ───────────
+  const HR_SIZE = cellW * 0.78;  // significantly larger than bg glyphs
+
+  hourInfo.forEach(({cx:hx,cy:hy,idx})=>{
+    const isActive = idx === hour;
+
+    ctx.save();
+    ctx.lineCap  = 'round';
+    ctx.lineJoin = 'round';
+
+    if(isActive){
+      // ACTIVE HOUR — amber, glowing, bold
+      ctx.shadowColor  = '#ffd060';
+      ctx.shadowBlur   = 18;
+      ctx.strokeStyle  = '#ffd060';
+      ctx.fillStyle    = '#ffd060';
+      ctx.lineWidth    = 1.8;
+      ctx.globalAlpha  = 1;
+    } else {
+      // INACTIVE HOURS — teal-silver, clear but calm
+      ctx.strokeStyle  = '#40e0d0';
+      ctx.fillStyle    = '#40e0d0';
+      ctx.lineWidth    = 1.2;
+      ctx.globalAlpha  = 0.82;
+      ctx.shadowColor  = 'rgba(0,220,200,0.3)';
+      ctx.shadowBlur   = 6;
+    }
+
+    GLYPHS[idx](ctx, hx, hy, HR_SIZE);
+    ctx.restore();
+
+    // ── small hour number below glyph (subtle) ─────────────
+    const numAng  = (idx*30-90)*Math.PI/180;
+    const numR    = hourRadius + HR_SIZE*1.1;
+    const numX    = cx + numR*Math.cos(numAng);
+    const numY    = cy + numR*Math.sin(numAng);
+    if(!inCircle(numX,numY,cx,cy,faceR*0.94)) return;
+
+    ctx.save();
+    ctx.font       = `${Math.round(HR_SIZE*0.55)}px "Cinzel", serif`;
+    ctx.textAlign  = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.globalAlpha  = isActive ? 0.9 : 0.3;
+    ctx.fillStyle    = isActive ? '#ffd060' : '#40b0a0';
+    ctx.shadowColor  = isActive ? '#ffd060' : 'transparent';
+    ctx.shadowBlur   = isActive ? 8 : 0;
+    const num = idx===0?12:idx;
+    ctx.fillText(num, numX, numY);
+    ctx.restore();
+  });
+
+  // ── PASS 4: inner guard ring ────────────────────────────────
+  // Thin circle at ~50% radius to separate inner space from glyph ring
+  ctx.beginPath();
+  ctx.arc(cx,cy,faceR*0.56,0,Math.PI*2);
+  ctx.strokeStyle = 'rgba(0,160,145,0.15)';
+  ctx.lineWidth   = 0.8;
+  ctx.setLineDash([3,4]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // outer edge glow ring
+  ctx.beginPath();
+  ctx.arc(cx,cy,faceR*0.955,0,Math.PI*2);
+  ctx.strokeStyle = 'rgba(0,180,160,0.12)';
+  ctx.lineWidth   = 1;
+  ctx.stroke();
+
+  ctx.restore(); // end clip
+}
+
+// ══════════════════════════════════════════════════════════════
+//  CLOCK ENGINE
+// ══════════════════════════════════════════════════════════════
+const hourHand   = document.getElementById('hourHand');
+const minuteHand = document.getElementById('minuteHand');
+const secondHand = document.getElementById('secondHand');
+const digitalEl  = document.getElementById('digitalTime');
+const dateEl     = document.getElementById('dateText');
+const nameEl     = document.getElementById('glyphName');
+
+const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const SEPS   = ['✦','⁂','✧','⊕','✵','⊛','✦'];
+function pad(n){ return String(n).padStart(2,'0'); }
+
+function resizeFace(){
+  const h = new Date().getHours()%12;
+  drawFace(h);
+}
+resizeFace();
+window.addEventListener('resize', resizeFace);
+
+let lastHour = -1;
+function tick(){
+  const now = new Date();
+  const h=now.getHours(), m=now.getMinutes(), s=now.getSeconds(), ms=now.getMilliseconds();
+
+  secondHand.style.transform = `rotate(${(s+ms/1000)*6}deg)`;
+  minuteHand.style.transform = `rotate(${(m+s/60)*6}deg)`;
+  hourHand.style.transform   = `rotate(${((h%12)+m/60)*30}deg)`;
+
+  const hh = h%12||12;
+  const sep = SEPS[Math.floor(s/10)%SEPS.length];
+  digitalEl.textContent = `${pad(hh)} ${sep} ${pad(m)} ${sep} ${pad(s)}`;
+  dateEl.textContent    = `${DAYS[now.getDay()]}  ·  ${MONTHS[now.getMonth()]} ${now.getDate()},  ${now.getFullYear()}`;
+
+  const hr = h%12;
+  if(hr !== lastHour){
+    lastHour = hr;
+    drawFace(hr);
+    nameEl.textContent = '⁂  '+HOUR_NAMES[hr]+'  ⁂';
+    nameEl.classList.add('show');
+    setTimeout(()=>nameEl.classList.remove('show'), 4000);
+  }
+}
+
+tick();
+setInterval(tick, 50);
+</script>
+</body>
+</html>
